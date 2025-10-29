@@ -139,7 +139,7 @@ export default function Dashboard() {
             Track your expenses and stay on budget
           </p>
         </div>
-        <Button size="lg" className="gap-2" onClick={() => window.location.href = '/upload'}>
+        <Button size="lg" className="gap-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700" onClick={() => window.location.href = '/upload'}>
           <Plus className="h-5 w-5" />
           Add Receipt
         </Button>

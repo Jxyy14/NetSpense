@@ -17,8 +17,8 @@ export const Navigation = () => {
       <div className="container mx-auto px-8">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <div className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors">
-              <Home className="h-5 w-5 text-primary" />
+            <div className="p-2 rounded-lg bg-gradient-to-r from-pink-500/10 to-purple-600/10 hover:from-pink-500/20 hover:to-purple-600/20 transition-colors">
+              <Home className="h-5 w-5 bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent" />
             </div>
           </Link>
           
@@ -26,7 +26,7 @@ export const Navigation = () => {
             <Button
               variant={isActive("/") ? "default" : "ghost"}
               asChild
-              className="gap-2"
+              className={isActive("/") ? "gap-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700" : "gap-2"}
             >
               <Link to="/dashboard">
                 <LayoutDashboard className="h-4 w-4" />
@@ -36,7 +36,7 @@ export const Navigation = () => {
             <Button
               variant={isActive("/upload") ? "default" : "ghost"}
               asChild
-              className="gap-2"
+              className={isActive("/upload") ? "gap-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700" : "gap-2"}
             >
               <Link to="/upload">
                 <Upload className="h-4 w-4" />
@@ -46,7 +46,7 @@ export const Navigation = () => {
             <Button
               variant={isActive("/transactions") ? "default" : "ghost"}
               asChild
-              className="gap-2"
+              className={isActive("/transactions") ? "gap-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700" : "gap-2"}
             >
               <Link to="/transactions">
                 <Receipt className="h-4 w-4" />
@@ -56,7 +56,7 @@ export const Navigation = () => {
             <Button
               variant={isActive("/budgets") ? "default" : "ghost"}
               asChild
-              className="gap-2"
+              className={isActive("/budgets") ? "gap-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700" : "gap-2"}
             >
               <Link to="/budgets">
                 <Target className="h-4 w-4" />
@@ -66,7 +66,7 @@ export const Navigation = () => {
             <Button
               variant={isActive("/analytics") ? "default" : "ghost"}
               asChild
-              className="gap-2"
+              className={isActive("/analytics") ? "gap-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700" : "gap-2"}
             >
               <Link to="/analytics">
                 <BarChart3 className="h-4 w-4" />
