@@ -40,20 +40,40 @@ export interface ParsedReceipt {
 export function parseReceiptText(text: string): ParsedReceipt {
   const lines = text.split('\n').filter(line => line.trim());
   
-  const amountRegex = /\$?\s*(\d+\.\d{2})|total[:\s]*\$?\s*(\d+\.\d{2})/gi;
   let total: number | undefined;
   
-  const amounts: number[] = [];
-  let match;
-  while ((match = amountRegex.exec(text)) !== null) {
-    const amount = parseFloat(match[1] || match[2]);
-    if (amount > 0) {
-      amounts.push(amount);
+  const totalRegex = /(?:total|amount\s+due|balance\s+due)[:\s]*\$?\s*(\d+\.\d{2})/gi;
+  const totalMatch = totalRegex.exec(text);
+  if (totalMatch) {
+    total = parseFloat(totalMatch[1]);
+  }
+  
+  if (!total) {
+    const lineRegex = /^.*total.*\$?\s*(\d+\.\d{2})/gim;
+    const matches = text.matchAll(lineRegex);
+    for (const match of matches) {
+      const amount = parseFloat(match[1]);
+      if (amount > 0) {
+        total = amount;
+        break;
+      }
     }
   }
   
-  if (amounts.length > 0) {
-    total = Math.max(...amounts);
+  if (!total) {
+    const amountRegex = /\$?\s*(\d+\.\d{2})/g;
+    const amounts: number[] = [];
+    let match;
+    while ((match = amountRegex.exec(text)) !== null) {
+      const amount = parseFloat(match[1]);
+      if (amount > 0) {
+        amounts.push(amount);
+      }
+    }
+    
+    if (amounts.length > 0) {
+      total = Math.max(...amounts);
+    }
   }
 
   const knownMerchants = [
