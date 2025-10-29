@@ -17,8 +17,8 @@ export const Navigation = () => {
       <div className="container mx-auto px-8">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <div className="p-2 rounded-lg bg-gradient-to-r from-pink-500/10 to-purple-600/10 hover:from-pink-500/20 hover:to-purple-600/20 transition-colors">
-              <Home className="h-5 w-5 bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent" />
+            <div className="p-2 rounded-lg bg-yellow-500/10 hover:bg-yellow-500/20 transition-colors">
+              <Home className="h-5 w-5 text-yellow-500" />
             </div>
           </Link>
           

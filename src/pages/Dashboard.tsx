@@ -129,10 +129,9 @@ export default function Dashboard() {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-      {/* Hero Header */}
       <div className="flex items-center justify-between py-8">
         <div>
-          <h1 className="text-6xl font-bold tracking-tight bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent mb-2">
+          <h1 className="text-6xl font-bold tracking-tight bg-gradient-to-r from-yellow-500 to-purple-600 bg-clip-text text-transparent mb-2">
             NetSpense
           </h1>
           <p className="text-xl text-muted-foreground">
@@ -145,7 +144,6 @@ export default function Dashboard() {
         </Button>
       </div>
 
-      {/* Summary Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -218,7 +216,7 @@ export default function Dashboard() {
         </Card>
       </div>
 
-      {/* Spending Alert */}
+
       {insights.trend === 'up' && Math.abs(insights.changePercentage) > 20 && (
         <Alert>
           <AlertCircle className="h-4 w-4" />
