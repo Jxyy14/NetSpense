@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { LayoutDashboard, Upload, Receipt, Target, BarChart3, Wallet } from "lucide-react";
+import { LayoutDashboard, Upload, Receipt, Target, BarChart3, Home } from "lucide-react";
 
 export const Navigation = () => {
   const location = useLocation();
@@ -14,16 +14,15 @@ export const Navigation = () => {
 
   return (
     <nav className="border-b border-border bg-card/50 backdrop-blur-lg sticky top-0 z-50">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-8">
         <div className="flex h-16 items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 font-bold text-xl">
-            <Wallet className="h-6 w-6 text-primary" />
-            <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-              NetSpense
-            </span>
+          <Link to="/" className="flex items-center gap-2">
+            <div className="p-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors">
+              <Home className="h-5 w-5 text-primary" />
+            </div>
           </Link>
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-8">
             <Button
               variant={isActive("/") ? "default" : "ghost"}
               asChild

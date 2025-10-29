@@ -129,16 +129,18 @@ export default function Dashboard() {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
+      {/* Hero Header */}
+      <div className="flex items-center justify-between py-8">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Financial Dashboard</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-6xl font-bold tracking-tight bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent mb-2">
+            NetSpense
+          </h1>
+          <p className="text-xl text-muted-foreground">
             Track your expenses and stay on budget
           </p>
         </div>
-        <Button className="gap-2" onClick={() => window.location.href = '/upload'}>
-          <Plus className="h-4 w-4" />
+        <Button size="lg" className="gap-2" onClick={() => window.location.href = '/upload'}>
+          <Plus className="h-5 w-5" />
           Add Receipt
         </Button>
       </div>
