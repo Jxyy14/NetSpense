@@ -227,9 +227,7 @@ export default function Dashboard() {
         </Alert>
       )}
 
-      {/* Charts */}
       <div className="grid gap-4 md:grid-cols-2">
-        {/* Monthly Spending Trend */}
         <Card className="col-span-2">
           <CardHeader>
             <CardTitle>Spending Trend</CardTitle>
@@ -266,7 +264,6 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        {/* Category Breakdown */}
         <Card>
           <CardHeader>
             <CardTitle>Spending by Category</CardTitle>
@@ -303,7 +300,6 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        {/* Top Categories */}
         <Card>
           <CardHeader>
             <CardTitle>Top Categories</CardTitle>
@@ -329,7 +325,6 @@ export default function Dashboard() {
         </Card>
       </div>
 
-      {/* Recent Transactions */}
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">

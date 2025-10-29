@@ -192,7 +192,6 @@ export default function Budgets() {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-      {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Budget Tracking</h1>
@@ -282,7 +281,6 @@ export default function Budgets() {
         </Dialog>
       </div>
 
-      {/* Overview Cards */}
       <div className="grid gap-4 md:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -327,7 +325,6 @@ export default function Budgets() {
         </Card>
       </div>
 
-      {/* Alerts */}
       {overBudgetCount > 0 && (
         <Alert variant="destructive">
           <AlertCircle className="h-4 w-4" />
@@ -337,7 +334,6 @@ export default function Budgets() {
         </Alert>
       )}
 
-      {/* Budget Cards */}
       <div className="grid gap-4">
         {budgetProgress.length > 0 ? (
           budgetProgress.map(({ budget, category, spent, remaining, percentage, isOverBudget }) => (

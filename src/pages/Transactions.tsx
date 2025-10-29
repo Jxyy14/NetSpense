@@ -207,7 +207,6 @@ export default function Transactions() {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-      {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Transactions</h1>
@@ -227,7 +226,6 @@ export default function Transactions() {
         </div>
       </div>
 
-      {/* Filters */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -272,7 +270,6 @@ export default function Transactions() {
         </CardContent>
       </Card>
 
-      {/* Summary */}
       <div className="grid gap-4 md:grid-cols-3">
         <Card>
           <CardHeader className="pb-3">
@@ -296,7 +293,6 @@ export default function Transactions() {
         </Card>
       </div>
 
-      {/* Transactions List */}
       <Card>
         <CardHeader>
           <CardTitle>All Transactions</CardTitle>

@@ -232,7 +232,6 @@ export default function UploadReceipt() {
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
-        {/* Receipt Upload */}
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -330,7 +329,6 @@ export default function UploadReceipt() {
           </CardContent>
         </Card>
 
-        {/* Transaction Details Form */}
         <Card>
           <CardHeader>
             <CardTitle>Transaction Details</CardTitle>

@@ -135,7 +135,6 @@ export default function FinanceAnalytics() {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-      {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Analytics & Insights</h1>
@@ -154,7 +153,6 @@ export default function FinanceAnalytics() {
         </Select>
       </div>
 
-      {/* Key Metrics */}
       <div className="grid gap-4 md:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -221,7 +219,6 @@ export default function FinanceAnalytics() {
         </Card>
       </div>
 
-      {/* Tabs for Different Views */}
       <Tabs defaultValue="trends" className="space-y-4">
         <TabsList>
           <TabsTrigger value="trends">Spending Trends</TabsTrigger>
@@ -229,7 +226,6 @@ export default function FinanceAnalytics() {
           <TabsTrigger value="patterns">Spending Patterns</TabsTrigger>
         </TabsList>
 
-        {/* Trends Tab */}
         <TabsContent value="trends" className="space-y-4">
           <Card>
             <CardHeader>
@@ -346,7 +342,6 @@ export default function FinanceAnalytics() {
           </div>
         </TabsContent>
 
-        {/* Categories Tab */}
         <TabsContent value="categories" className="space-y-4">
           <Card>
             <CardHeader>
@@ -405,7 +400,6 @@ export default function FinanceAnalytics() {
           </div>
         </TabsContent>
 
-        {/* Patterns Tab */}
         <TabsContent value="patterns" className="space-y-4">
           <Card>
             <CardHeader>
