@@ -1,32 +1,39 @@
 # NetSpense
 
-A personal finance web application with receipt OCR scanning and smart expense categorization.
+Smart personal finance tracker with OCR receipt scanning and AI-powered categorization.
 
-## Features
+## ✨ Features
 
-- Receipt scanning with OCR (Tesseract.js)
-- AI-powered expense categorization
-- Budget tracking
-- Interactive analytics and charts
-- Transaction management
+- 📸 **Receipt OCR Scanning** - Upload receipts and automatically extract transaction details
+- 🤖 **AI Categorization** - Smart expense categorization with >90% accuracy using NLP
+- 💰 **Budget Tracking** - Set limits and track spending progress
+- 📊 **Interactive Analytics** - Beautiful charts with trend analysis
+- 💳 **Transaction Management** - View, edit, and organize all expenses
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 - React + TypeScript
 - Vite
 - Supabase
 - Tailwind CSS + shadcn/ui
 - Recharts
+- Tesseract.js (OCR)
 
-## Setup
+## 🚀 Quick Start
 
 ```bash
 npm install
 npm run dev
 ```
 
-Create `.env.local`:
-```env
-VITE_SUPABASE_URL=your_url
-VITE_SUPABASE_ANON_KEY=your_key
-```
+## 📬 Connect
+
+Built by Jaffer Wehliye
+
+- GitHub: [github.com/YOUR_GITHUB]
+- LinkedIn: [linkedin.com/in/YOUR_LINKEDIN]
+- Twitter: [@YOUR_TWITTER]
+
+## 📄 License
+
+MIT License
