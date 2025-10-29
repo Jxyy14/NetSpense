@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { getDemoUserId } from "@/lib/mock-user";
 import { 
   LineChart, Line, AreaChart, Area, BarChart, Bar,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer 
@@ -44,8 +45,7 @@ export default function FinanceAnalytics() {
     try {
       setLoading(true);
 
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      const userId = getDemoUserId();
 
       // Load categories
       const { data: categoriesData, error: categoriesError } = await supabase
@@ -60,7 +60,7 @@ export default function FinanceAnalytics() {
       const { data: transactionsData, error: transactionsError } = await supabase
         .from('transactions')
         .select('*')
-        .eq('user_id', user.id)
+        .eq('user_id', userId)
         .gte('date', format(subMonths(new Date(), 12), 'yyyy-MM-dd'))
         .order('date', { ascending: true });
 

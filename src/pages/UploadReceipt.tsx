@@ -11,6 +11,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { extractTextFromImage, parseReceiptText } from "@/lib/ocr";
 import { categorizeTransaction } from "@/lib/categorization";
+import { getDemoUserId } from "@/lib/mock-user";
 import { Upload, Camera, Loader2, CheckCircle, AlertCircle, Sparkles } from "lucide-react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -157,22 +158,14 @@ export default function UploadReceipt() {
     try {
       setLoading(true);
 
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
-        toast({
-          title: "Not authenticated",
-          description: "Please sign in to add transactions",
-          variant: "destructive",
-        });
-        return;
-      }
+      const userId = getDemoUserId();
 
       let receiptUrl = null;
 
       // Upload receipt image if available
       if (selectedFile) {
         const fileExt = selectedFile.name.split('.').pop();
-        const fileName = `${user.id}/${Date.now()}.${fileExt}`;
+        const fileName = `${userId}/${Date.now()}.${fileExt}`;
 
         const { error: uploadError } = await supabase.storage
           .from('receipts')
@@ -192,7 +185,7 @@ export default function UploadReceipt() {
       const { error: insertError } = await supabase
         .from('transactions')
         .insert({
-          user_id: user.id,
+          user_id: userId,
           merchant: formData.merchant,
           amount: parseFloat(formData.amount),
           description: formData.description,

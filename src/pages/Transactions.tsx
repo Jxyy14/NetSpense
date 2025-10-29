@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { formatCurrency } from "@/lib/finance-utils";
+import { getDemoUserId } from "@/lib/mock-user";
 import { Search, Filter, Download, Edit, Trash2, Receipt, Plus } from "lucide-react";
 import { format } from "date-fns";
 import type { Transaction } from "@/lib/finance-utils";
@@ -46,8 +47,7 @@ export default function Transactions() {
     try {
       setLoading(true);
 
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      const userId = getDemoUserId();
 
       // Load categories
       const { data: categoriesData, error: categoriesError } = await supabase
@@ -62,7 +62,7 @@ export default function Transactions() {
       const { data: transactionsData, error: transactionsError } = await supabase
         .from('transactions')
         .select('*')
-        .eq('user_id', user.id)
+        .eq('user_id', userId)
         .order('date', { ascending: false });
 
       if (transactionsError) throw transactionsError;

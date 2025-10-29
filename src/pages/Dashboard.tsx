@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { getDemoUserId } from "@/lib/mock-user";
 import { 
   AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer 
@@ -46,16 +47,7 @@ export default function Dashboard() {
     try {
       setLoading(true);
 
-      // Check authentication
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
-        toast({
-          title: "Not authenticated",
-          description: "Please sign in to view your dashboard.",
-          variant: "destructive",
-        });
-        return;
-      }
+      const userId = getDemoUserId();
 
       // Load categories
       const { data: categoriesData, error: categoriesError } = await supabase
@@ -75,7 +67,7 @@ export default function Dashboard() {
       const { data: transactionsData, error: transactionsError } = await supabase
         .from('transactions')
         .select('*')
-        .eq('user_id', user.id)
+        .eq('user_id', userId)
         .gte('date', format(subMonths(now, 6), 'yyyy-MM-dd'))
         .order('date', { ascending: false });
 

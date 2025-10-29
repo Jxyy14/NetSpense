@@ -10,6 +10,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { formatCurrency, calculateBudgetProgress } from "@/lib/finance-utils";
+import { getDemoUserId } from "@/lib/mock-user";
 import { Plus, Target, AlertCircle, TrendingUp, Edit, Trash2 } from "lucide-react";
 import { startOfMonth, endOfMonth, format } from "date-fns";
 import type { Transaction, Budget } from "@/lib/finance-utils";
@@ -42,8 +43,7 @@ export default function Budgets() {
     try {
       setLoading(true);
 
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      const userId = getDemoUserId();
 
       // Load categories
       const { data: categoriesData, error: categoriesError } = await supabase
@@ -58,7 +58,7 @@ export default function Budgets() {
       const { data: budgetsData, error: budgetsError } = await supabase
         .from('budgets')
         .select('*')
-        .eq('user_id', user.id)
+        .eq('user_id', userId)
         .eq('is_active', true);
 
       if (budgetsError) throw budgetsError;
@@ -72,7 +72,7 @@ export default function Budgets() {
       const { data: transactionsData, error: transactionsError } = await supabase
         .from('transactions')
         .select('*')
-        .eq('user_id', user.id)
+        .eq('user_id', userId)
         .gte('date', format(monthStart, 'yyyy-MM-dd'))
         .lte('date', format(monthEnd, 'yyyy-MM-dd'));
 
@@ -104,13 +104,12 @@ export default function Budgets() {
     }
 
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      const userId = getDemoUserId();
 
       const { error } = await supabase
         .from('budgets')
         .insert({
-          user_id: user.id,
+          user_id: userId,
           category_id: formData.category_id,
           amount: parseFloat(formData.amount),
           period: formData.period,
