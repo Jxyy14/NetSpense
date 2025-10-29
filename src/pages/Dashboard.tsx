@@ -132,7 +132,7 @@ export default function Dashboard() {
       {/* Hero Header */}
       <div className="flex items-center justify-between py-8">
         <div>
-          <h1 className="text-6xl font-bold tracking-tight bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent mb-2">
+          <h1 className="text-6xl font-bold tracking-tight bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent mb-2">
             NetSpense
           </h1>
           <p className="text-xl text-muted-foreground">
