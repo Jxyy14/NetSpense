@@ -30,9 +30,9 @@ npm run dev
 
 Built by Jaffer Wehliye
 
-- GitHub: [github.com/YOUR_GITHUB]
-- LinkedIn: [linkedin.com/in/YOUR_LINKEDIN]
-- Twitter: [@YOUR_TWITTER]
+- Twitter/X: [@wehliyejaffer](https://twitter.com/wehliyejaffer)
+- LinkedIn: [Jaffer Wehliye](https://www.linkedin.com/in/jwehliye/)
+- Instagram: [@jw14_](https://instagram.com/jw14_)
 
 ## 📄 License
 
