@@ -56,7 +56,57 @@ export function parseReceiptText(text: string): ParsedReceipt {
     total = Math.max(...amounts);
   }
 
-  const merchant = lines[0]?.trim() || undefined;
+  const knownMerchants = [
+    'walmart', 'target', 'costco', 'whole foods', 'trader joe', 'kroger', 'safeway',
+    'mcdonalds', 'starbucks', 'chipotle', 'subway', 'wendys', 'taco bell',
+    'amazon', 'best buy', 'home depot', 'lowes', 'cvs', 'walgreens',
+    'shell', 'chevron', 'exxon', 'bp', 'mobil', 'arco'
+  ];
+
+  const skipPatterns = [
+    /give.*feedback/i,
+    /survey\./i,
+    /www\./i,
+    /http/i,
+    /^\d+$/,
+    /receipt/i,
+    /thank you/i,
+    /store #/i,
+    /^\*+$/,
+    /^-+$/,
+    /^=+$/,
+  ];
+
+  let merchant: string | undefined;
+
+  for (const line of lines) {
+    const lineLower = line.toLowerCase().trim();
+    
+    if (skipPatterns.some(pattern => pattern.test(line))) {
+      continue;
+    }
+
+    if (line.length < 3 || line.length > 50) {
+      continue;
+    }
+
+    const foundMerchant = knownMerchants.find(m => lineLower.includes(m));
+    if (foundMerchant) {
+      merchant = foundMerchant.split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+      break;
+    }
+
+    if (!merchant && line.match(/^[A-Za-z\s&'-]+$/) && line.length > 3) {
+      merchant = line.trim();
+      break;
+    }
+  }
+
+  if (!merchant) {
+    merchant = lines[0]?.trim() || undefined;
+  }
 
   const dateRegex = /(\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4})|(\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2})/g;
   const dateMatch = text.match(dateRegex);
