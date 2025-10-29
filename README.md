@@ -1,4 +1,4 @@
-# FinanceTracker
+# NetSpense
 
 A personal finance web application with receipt OCR scanning and smart expense categorization.
 

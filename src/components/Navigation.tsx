@@ -19,7 +19,7 @@ export const Navigation = () => {
           <Link to="/" className="flex items-center gap-2 font-bold text-xl">
             <Wallet className="h-6 w-6 text-primary" />
             <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-              FinanceTracker
+              NetSpense
             </span>
           </Link>
           
