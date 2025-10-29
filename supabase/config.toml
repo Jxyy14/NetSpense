@@ -1,0 +1,13 @@
+project_id = "tuprvwcalrdisahgodjx"
+
+[functions.analyze-sentiment]
+verify_jwt = false
+
+[functions.generate-company-summary]
+verify_jwt = false
+
+[functions.send-verification]
+verify_jwt = false
+
+[functions.verify-offer]
+verify_jwt = false
